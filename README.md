@@ -1,4 +1,4 @@
-#### **🗒️ note**
+## **🗒️ note**
 
 `note` is easy to use, personal note saving web based application.
 
@@ -14,17 +14,17 @@
 
 `note` web app is built using following in-demand technologies:
 
-# 🔹 Frontend
+🔹 Frontend
 
 - HTML (for structuring the User Interface)
 - CSS (for beautifying the User Interface)
 - Angular.js - popular framework by Google (for note functionality and interacting with backend)
 
-# 🔹 BACKEND
+🔹 BACKEND
 
 - Node.JS - A run-time environment off JavaScript (for executing the frontend on server)
 - Express.JS - A JavaScript Framework of Node.JS (for handling client's requests and interacting with database).
 
-# 🔹 DATABASE:
+🔹 DATABASE:
 
 - MongoDB - Easy to use, Non-Relational Database Management System to store notes persistently.
