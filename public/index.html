@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <!-- Angular JS [*CAUTION*] -->
+     <script src="./js/angular.min.js"></script>
+     <!-- custom-css -->
+     <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body ng-controller="notesController">
+    <center>
+        <main class="container">
+            <h1>NOTES CATALOG</h1>
+
+            <button ng-click="newNote()" class="new-note-btn">new ➕</button>
+            
+            <!-- notes-ui -->
+            <section class="notes-grid">
+                <section class="note-card" ng-repeat="note in data | orderBy: '-createdAt'">
+                    <span class="star-toggle" ng-click="toggleStarred(note._id)">
+                        <span ng-if="note.starred">⭐</span>
+                        <span ng-if="!note.starred">☆</span>
+                    </span>
+                    <h3>{{ note.title }}</h3>
+                    <p>{{ note.content }}</p>
+                    <small>{{ note.createdAt | date:'yyyy-MM-dd' }}</small>
+                    <section class="card-actions">
+                        <button ng-click="fetchNote(note._id)">📌 View</button>
+                        <button ng-click="removeNote(note._id)">❌ Remove</button>
+                    </section>
+                </section>
+            </section>
+        </main>
+
+        <!-- new-note or update-section -->
+        <main class="update-container" ng-show="_fetchNoteTriggered || _newNoteTriggered">
+            <h1>Your Note 📝</h1>
+            <form name="noteForm" novalidate>
+                <div>
+                    <input type="text" name="title" ng-model="noteData.title" placeholder="A Title you like?" ng-required="true" />
+                    <div ng-show="noteForm.title.$touched && noteForm.title.$invalid" class="error-message">
+                        Title is required.
+                    </div>
+                </div>
+
+                <div>
+                    <input type="text" name="content" ng-model="noteData.content" placeholder="A content you like?" ng-required="true" />
+                    <div ng-show="noteForm.content.$touched && noteForm.content.$invalid" class="error-message">
+                        Content is required.
+                    </div>
+                </div>
+
+                <button type="submit"
+                    ng-disabled="noteForm.$invalid"
+                    ng-click="_fetchNoteTriggered ? updateNote(noteData._id) : saveNewNote();">
+                    save ✏️
+                </button>
+            </form>
+        </main>
+    </center>
+
+    <!-- custom-JavaScript -->
+     <script src="./js/script.js"></script>
+</body>
+</html>
