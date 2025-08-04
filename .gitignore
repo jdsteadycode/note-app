@@ -1,0 +1,5 @@
+# not included `node dependencies`
+node_modules
+
+# not included `db path config`
+db
